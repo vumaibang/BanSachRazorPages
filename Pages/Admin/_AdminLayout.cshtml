@@ -1,0 +1,9 @@
+@{ var current = ViewContext.RouteData.Values["page"]?.ToString() ?? ""; }
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>@ViewData["Title"] - Quản trị Nhà Sách</title><link rel="icon" href="~/favicon.ico" /><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /><link rel="stylesheet" href="~/css/razor.css" asp-append-version="true" /></head>
+<body><div class="admin-shell"><aside class="admin-sidebar"><a class="sidebar-brand" asp-page="/Admin/Index">📚 BOOK STORE</a><nav class="sidebar-menu" aria-label="Quản trị">
+@foreach (var item in new[] { ("/Admin/Index", "🏠 Tổng quan"), ("/Admin/Products/Index", "📚 Quản lý sản phẩm"), ("/Admin/Categories/Index", "📂 Quản lý danh mục"), ("/Admin/Orders/Index", "🛒 Quản lý đơn hàng"), ("/Admin/Customers/Index", "👥 Quản lý khách hàng"), ("/Admin/Accounts/Index", "👤 Quản lý tài khoản") }) {
+var active = item.Item1 == "/Admin/Index" ? current == item.Item1 : current.StartsWith(item.Item1[..^6]);
+<a asp-page="@item.Item1" class="@(active ? "active" : "")">@item.Item2</a> }
+<a asp-page="/User/Index">↗ Xem cửa hàng</a></nav></aside>
+<div class="admin-main"><header class="admin-header"><strong>HỆ THỐNG QUẢN LÝ BÁN SÁCH</strong><span>@User.Identity?.Name</span><form method="post" asp-page="/Admin/Logout"><button class="btn btn-outline-secondary btn-sm">Đăng xuất</button></form></header><main class="admin-content"><partial name="_Feedback" />@RenderBody()</main></div></div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="~/js/site.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts", required: false)</body></html>

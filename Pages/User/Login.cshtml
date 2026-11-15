@@ -1,0 +1,9 @@
+@page 
+@model BanSachRazorPages.Pages.User.LoginModel
+@{ Layout = "/Pages/User/_UserLayout.cshtml"; ViewData["Title"] = "Chào mừng trở lại"; }
+<div class="container page-space"><section class="auth-card"><p class="section-subtitle">NHÀ SÁCH</p><h1>Chào mừng trở lại</h1><p class="text-muted">SUBChào mừng trở lại</p><partial name="_Feedback" />
+<form method="post" data-submit-once><div asp-validation-summary="All" class="text-danger"></div><input asp-for="ReturnUrl" type="hidden" />
+<label asp-for="Username" class="form-label">Tên đăng nhập</label><input asp-for="Username" class="form-control mb-3" autocomplete="username" />
+<label asp-for="Password" class="form-label">Mật khẩu</label><input asp-for="Password" type="password" class="form-control mb-4" autocomplete="current-password" />
+<button class="btn btn-login w-100" type="submit">Đăng nhập</button></form><p class="mt-4 mb-0">Chưa có tài khoản? <a asp-page="/User/Register">Đăng ký</a></p><a class="d-inline-block mt-3" asp-page="/User/Index">← Về cửa hàng</a></section></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

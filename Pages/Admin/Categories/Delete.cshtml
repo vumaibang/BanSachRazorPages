@@ -1,0 +1,4 @@
+@page "{id:int}"
+@model BanSachRazorPages.Pages.Admin.Categories.DeleteModel
+@{ ViewData["Title"] = "Xóa danh mục"; }
+<h1>Xóa danh mục</h1><section class="panel"><h2 class="h4">@Model.Item.CategoryName</h2><p>Chỉ có thể xóa danh mục chưa chứa sách.</p><p>Bạn có chắc muốn xóa mục này?</p><form method="post"><div asp-validation-summary="All" class="text-danger"></div><button class="btn btn-danger">Xác nhận xóa</button><a class="btn btn-link" asp-page="./Index">Quay lại</a></form></section>

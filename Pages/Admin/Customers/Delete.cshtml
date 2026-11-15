@@ -1,0 +1,4 @@
+@page "{id:int}"
+@model BanSachRazorPages.Pages.Admin.Customers.DeleteModel
+@{ ViewData["Title"] = "Xóa khách hàng"; }
+<h1>Xóa khách hàng</h1><section class="panel"><h2 class="h4">@Model.Item.FullName</h2><p>Không thể xóa khách hàng đã có đơn hàng. Tài khoản liên kết sẽ bị khóa khi xóa hồ sơ.</p><p>Bạn có chắc muốn xóa mục này?</p><form method="post"><div asp-validation-summary="All" class="text-danger"></div><button class="btn btn-danger">Xác nhận xóa</button><a class="btn btn-link" asp-page="./Index">Quay lại</a></form></section>

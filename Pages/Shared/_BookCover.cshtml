@@ -1,0 +1,3 @@
+@model Product
+@if (string.IsNullOrWhiteSpace(Model.ImageUrl)) { <div class="no-image"><span>📖</span><small>@Model.ProductName</small></div> }
+else { <img src="@Model.ImageUrl" alt="Bìa sách @Model.ProductName" loading="lazy" /> }

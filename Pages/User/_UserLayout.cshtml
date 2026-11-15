@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"] - Nhà Sách</title><link rel="icon" href="~/favicon.ico" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /><link rel="stylesheet" href="~/css/razor.css" asp-append-version="true" /></head>
+<body><header class="bookstore-navbar"><nav class="container store-nav" aria-label="Điều hướng chính">
+<a class="navbar-brand bookstore-logo" asp-page="/User/Index">📚 NHÀ SÁCH</a>
+<button class="btn btn-outline-secondary mobile-menu" type="button" data-store-menu aria-controls="store-menu" aria-expanded="false" aria-label="Mở menu">☰</button>
+<div class="store-links" id="store-menu"><a asp-page="/User/Index">Trang chủ</a><a href="/#sach-moi">Sách mới</a>
+@if (User.IsInRole("Admin")) { <a asp-page="/Admin/Index">Quản trị</a><form method="post" asp-page="/Admin/Logout"><button class="btn btn-outline-secondary btn-sm">Đăng xuất</button></form> }
+else { <a asp-page="/User/Cart/Index">🛒 Giỏ hàng</a>
+@if (User.Identity?.IsAuthenticated == true) { <a asp-page="/User/Orders/Index">Đơn hàng</a><a asp-page="/User/Profile/Index">@User.Identity.Name</a><form method="post" asp-page="/User/Logout"><button class="btn btn-outline-secondary btn-sm">Đăng xuất</button></form> }
+else { <a class="btn btn-login" asp-page="/User/Login">Đăng nhập</a><a asp-page="/User/Register">Đăng ký</a> } }
+</div></nav></header><main class="store-main">@RenderBody()</main>
+<footer class="bookstore-footer"><div class="container"><h4>📚 NHÀ SÁCH</h4><p>Không gian dành cho những người yêu sách và tri thức.</p><p class="mb-0">© @DateTime.Now.Year Nhà Sách · <a asp-page="/User/Privacy">Quyền riêng tư</a> · <a asp-page="/Admin/Login">Quản trị viên</a></p></div></footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="~/js/site.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts", required: false)</body></html>

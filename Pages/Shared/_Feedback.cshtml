@@ -1,0 +1,5 @@
+@foreach (var key in new[] { "SuccessMessage", "CartMessage", "OrderMessage", "RegisterSuccess", "PasswordMessage" })
+{
+    @if (TempData[key] is string message) { <div class="alert alert-success" role="status">@message</div> }
+}
+@if (TempData["ErrorMessage"] is string error) { <div class="alert alert-danger" role="alert">@error</div> }
